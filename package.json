@@ -3,7 +3,8 @@
         "main": "server.js",
         "engines": {
             "node": "0.12.x",
-            "npm": "2.15.x",
+            "npm": "2.15.x"},
+            
         "dependencies": {
             "express": "~4.13.4",
             "mongoose": "~4.4.6",
