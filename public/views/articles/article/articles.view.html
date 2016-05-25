@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>List of articles</h1>
+  <section class="search-items">
+    <input ng-model="searchText" placeholder="Search for articles" class="search-text">
+    <div class="row">
+      <div class="col-sm-6">
+        <h6>Search based on categories:</h6>
+        <input type="button" value="Code" ng-click="searchText = 'Code'" class="btn btn-primary">
+        <input type="button" value="Report" ng-click="searchText = 'Report'" class="btn btn-primary">
+        <input type="button" value="Design" ng-click="searchText = 'Design'" class="btn btn-primary">
+        <input type="button" value="Web Development" ng-click="searchText = 'Web Development'" class="btn btn-primary">
+      </div>
+      <div class="col-sm-6">
+        <h6>Search based on tags:</h6>
+        <input type="button" value="HTML" ng-click="searchText = 'HTML'" class="btn btn-primary">
+        <input type="button" value="CSS" ng-click="searchText = 'CSS'" class="btn btn-primary">
+        <input type="button" value="MEAN Stack" ng-click="searchText = 'MEAN Stack'" class="btn btn-primary">
+        <input type="button" value="Meteor.js" ng-click="searchText = 'Meteor.js'" class="btn btn-primary">
+        <input type="button" value="PHP" ng-click="searchText = 'Meteor.js'" class="btn btn-primary">
+      </div>
+    </div>
+  </section>
+  <section class="articles" ng-repeat="contentItem in content | filter:searchText">
+    <article class="well">
+      <h3>{{ contentItem.local.title }}</h3>
+      <p>{{ contentItem.local.content }}</p>
+      <span><b>Article author: {{ contentItem.local.author }}</b></span><br/>
+      <span class="label label-primary">{{ contentItem.local.categories.category }}</span>
+      <span class="label label-primary">{{ contentItem.local.tags.tag }}</span>
+    </article>
+  </section>
+</div>

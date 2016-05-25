@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title Node Authentication
+    link(rel='stylesheet', href='libs/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='libs/font-awesome/css/font-awesome.min.css')
+    style.
+      body        { padding-top:80px; word-wrap:break-word; }
+  body
+    .container
+      .page-header.text-center
+        h1
+          span.fa.fa-anchor
+          |  Profile Page
+        - var userRole = user.local.role
+        if userRole === 'admin'
+          a.btn.btn-default.btn-sm(href='/admin') Admin Panel
+        a.btn.btn-default.btn-sm(href='/articles') Articles
+        a.btn.btn-default.btn-sm(href='/logout') Logout
+      .row
+        // LOCAL INFORMATION
+        .col-sm-6
+          .well
+            h3
+              span.fa.fa-user
+              |  Welcome #{user.local.email}
+            p Welcome to Your Profile #{user.local.role}
+
+          .well
+            h3 Last Added Content:
+            p Dinamo, INTERZISA in Europa!
+            p Footbal News
+            p FC Baia Mare in Liga 1 
+          
+
+        // Input Form for adding content
+        .col-sm-6
+          .well
+            h3 Title
+              |     
+              input.form-control(type='text', placeholder='Please Write a Title')
+              |       
+              h3 Add Content
+              |   
+              textarea.form-control(rows='6')
+              |     
+              br
+              |       
+              button.btn.btn-default(type='submit') Add
+
+
+           
+        
+          
+
+       
+
+
+              

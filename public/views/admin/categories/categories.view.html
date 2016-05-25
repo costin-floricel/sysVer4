@@ -1,0 +1,66 @@
+<h1>Categories administration</h1>
+  	
+  	<p><button class="btn btn-primary" data-toggle="modal" ng-click="openCreateCategoriesModal()" data-target="#modalTag">Create category</button></p>
+  	
+    <table class="table table-bordered table-striped">
+    
+       <tr>
+        <th>Category name</th>
+        <th></th>
+        <th></th>
+        
+      </tr>
+
+      <tr ng-repeat="category in categories">
+        <td>{{ category.local.name }}</td>
+        <td><button class="btn btn-success" data-toggle="modal" ng-click="openEditCategoriesModal(category._id)" data-target="#modalTag">Edit</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteCategory(category._id)" data-toggle="modal" data-target="#modalConfirmDelete">Delete</button></td>
+      </tr>
+
+    </table>
+    
+                 
+  <div class="modal fade" id="modalTag" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{{ modalTitle }} </h4>
+        </div>
+        <div class="modal-body">
+          
+          <form>
+            <div class="form-group">
+              <label for="category">Category name</label>
+              <input type="text" class="form-control" id="category" ng-model="category.local.name" placeholder="Category name">
+            </div>
+          </form>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-click="saveCategory()" data-dismiss="modal">Save</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->      
+                 
+
+  <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Do you want to delete the selected category?</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{ category.local.name }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="performDeleteCategory()">Delete</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal --> 

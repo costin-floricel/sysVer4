@@ -1,0 +1,18 @@
+What was done:
+
+Installed latest packages version - package.json
+
+Installed and used jade templating engine, passport, passport-local,passport-facebook incase we have time to do facebook authentication as well. 
+
+Created the folowing pages in views folder: index.jade, signup.jade, login.jade, profile.jade
+
+The server can be accessed at: http://localhost:8080
+
+I have created a database using momgolab. The connection to the database is:     url : 'mongodb://meetupadmin:meetuppassword@ds019488.mlab.com:19488/meetup-db'
+
+Database name: meetup-db
+Database user: meetupadmin
+Database passwd: meetuppassword
+
+
+

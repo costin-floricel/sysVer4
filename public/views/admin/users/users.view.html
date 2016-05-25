@@ -1,0 +1,84 @@
+<h1>User administration</h1>
+  	
+  	<p><button class="btn btn-primary" data-toggle="modal" ng-click="openCreateUserModal()" data-target="#modalUser">Create user</button></p>
+  	
+    <table class="table table-bordered table-striped">
+    
+       <tr>
+        <th>User email</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
+        
+      </tr>
+
+      <tr ng-repeat="user in users">
+        <td>{{ user.local.email }}</td>
+        <td>{{ user.local.role }}</td>
+        <td><button class="btn btn-success" data-toggle="modal" ng-click="openEditUserModal(user._id)" data-target="#modalUser">Edit</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteUser(user._id)" data-toggle="modal" data-target="#modalConfirmDelete">Delete</button></td>
+      </tr>
+
+    </table>
+    
+                 
+  <div class="modal fade" id="modalUser" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{{ modalTitle }} </h4>
+        </div>
+        <div class="modal-body">
+          
+          <form>
+            <div class="form-group">
+              <label for="username">User email</label>
+              <input type="text" class="form-control" id="username" ng-model="user.local.email" placeholder="User Email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" ng-model="user.local.password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" ng-model="user.local.name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" class="form-control" ng-model="user.local.role">
+                <option value="admin">admin</option>
+                <option value="author">author</option>
+                <option value="default">default</option>
+              </select>
+            </div>
+          </form>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-click="saveUser()" data-dismiss="modal">Save</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->      
+                 
+
+  <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Do you want to delete the selected user?</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{ user.local.email }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="performDeleteUser()">Delete</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal --> 
